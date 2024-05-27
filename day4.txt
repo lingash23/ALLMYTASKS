@@ -1,2 +1,107 @@
-<html>
-</html>
+Do the below programs in anonymous function & IIFE
+Print odd numbers in an array
+	/* IIFE */
+ var nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  (function (data = []) {
+  data.forEach((element) => {
+    if (element % 2 !== 0) {
+       console.log(element)
+    }
+  })
+  for (var x = 0; x < data.length; x++) {
+    if (data[x] % 2 !== 0) {
+       console.log(data[x])
+    }
+  }
+})(nums)
+
+Convert all the strings to title caps in a string array
+
+	/* IIFE */
+(function(strings) {
+  var titleCasedStrings = strings.map(str => str.toLowerCase().replace(/(?:^|\s)\w/g, match => match.toUpperCase()));
+  console.log(titleCasedStrings);
+})(['hello world', 'this is a test', 'all lowercase words']);
+
+Sum of all numbers in an array
+
+(function(numbers) {
+
+const sum = numbers.reduce((accumulator, current) => accumulator + current, 0);
+  console.log(sum);
+})
+([1, 2, 3, 4, 5]);
+
+
+
+
+
+
+Return all the prime numbers in an array
+
+  (function(start, end) {
+  const numbers = Array.from({ length: end - start + 1 }, (_, i) => i + start);
+  const primes = numbers.filter(isPrime);
+
+  function isPrime(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+
+    let i = 5;
+    while (i * i <= num) {
+      if (num % i === 0 || num % (i + 2) === 0) return false;
+      i += 6;
+    }
+    return true;
+  }
+
+  console.log(primes);
+}) (2, 10);
+
+Return all the palindromes in an array
+
+(function(words) {
+  const palindromes = words.filter(word => {
+    const normalizedWord = word.toLowerCase().replace(/\W/g, "");
+    return normalizedWord === normalizedWord.split("").reverse().join("");
+  });
+  console.log(palindromes);
+})
+(["racecar", "hello", "noon", "level", "madam"]);
+
+Return median of two sorted arrays of the same size.
+
+(function(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    throw new Error("Arrays must be of the same size");
+  }
+  const n = arr1.length;
+
+  // Handle even-sized arrays
+  if (n % 2 === 0) {
+    const mid1 = arr1[Math.floor(n / 2) - 1];
+    const mid2 = arr2[Math.floor(n / 2) - 1];
+    return (mid1 + mid2) / 2;
+  }
+
+  // Handle odd-sized arrays
+  const midIndex = Math.floor(n / 2);
+  const median = (arr1[midIndex] + arr2[midIndex]) / 2;
+  return median;
+})([1, 2, 3], [4, 5, 6]); // Change arrays as needed
+
+Remove duplicates from an array
+
+(function(arr) {
+  const uniqueElements = [...new Set(arr)];
+  console.log(uniqueElements);
+})([1, 2, 2, 3, 4, 5, 5, 6]);
+
+Rotate an array by k times
+
+(function(arr, k) {
+  k = k % arr.length; // Handle k exceeding array length
+  const rotated = arr.slice(k).concat(arr.slice(0, k));
+  console.log(rotated);
+})([1, 2, 3, 4, 5], 2); // Change array and rotation count as needed
