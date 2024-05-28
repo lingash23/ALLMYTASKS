@@ -32,11 +32,6 @@ const sum = numbers.reduce((accumulator, current) => accumulator + current, 0);
 })
 ([1, 2, 3, 4, 5]);
 
-
-
-
-
-
 Return all the prime numbers in an array
 
   (function(start, end) {
@@ -105,3 +100,76 @@ Rotate an array by k times
   const rotated = arr.slice(k).concat(arr.slice(0, k));
   console.log(rotated);
 })([1, 2, 3, 4, 5], 2); // Change array and rotation count as needed
+
+Do the below programs in arrow functions.
+
+Print odd numbers in an array
+
+const numbers = [1, 2, 3, 4, 5];
+
+const printOddNumbers = (arr) => {
+  arr.forEach(number => {
+    if (number % 2 !== 0) {
+      console.log(number);
+    }
+  });
+};
+printOddNumbers(numbers);
+
+Convert all the strings to title caps in a string array
+
+const strings = ["hello world", "JAVASCRIPT", "hEllo tHere"];
+
+const convertToTitleCase = (arr) => {
+  return arr.map(str => {
+    // Convert to lowercase first for consistent capitalization
+    return str.toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  });
+};
+
+const titleCaseStrings = convertToTitleCase(strings);
+console.log(titleCaseStrings); // ["Hello World", "JavaScript", "Hello There"]
+
+
+Sum of all numbers in an array
+
+const numbers = [1, 2, 3, 4, 5];
+
+const sum = numbers.reduce((accumulator, currentNumber) => accumulator + currentNumber, 0);
+
+console.log(sum); // Output: 15
+Return all the prime numbers in an array
+
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const isPrime = (num) => {
+  if (num <= 1) return false; // 1 or less are not prime
+  for (let i = 2; i < Math.sqrt(num); i++) {
+    if (num % i === 0) return false; // Divisible by another number (except 1 and itself)
+  }
+  return true; // No divisors found, prime number
+};
+
+const primeNumbers = numbers.filter(number => isPrime(number));
+
+console.log(primeNumbers); // Output: [2, 3, 5, 7]
+
+Return all the palindromes in an array
+
+
+	const strings = ["racecar", "hello", "madam", "refer"];
+
+const isPalindrome = (str) => {
+  // Handle case sensitivity (optional)
+  const normalizedStr = str.toLowerCase();
+  const reversedStr = normalizedStr.split("").reverse().join("");
+  return normalizedStr === reversedStr;
+};
+
+const palindromes = strings.filter(str => isPalindrome(str));
+
+console.log(palindromes); // Output: ["racecar", "madam"]
+
